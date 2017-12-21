@@ -13,55 +13,57 @@ const Store = () => Promise.resolve({
 	  		    </div>
 	  		  </el-col>
 	  		</el-row>
-	  		<hr v-if="filteredData.length>0">
-	  		<el-row :gutter="20" v-if="filteredData.length>0">
-	  		  <el-col :span="24">
-		  		<el-table
-			      :data="filteredData"
-			      style="width: 100%">
-			      <el-table-column
-			        prop="pincode"
-			        label="Pincode"
-			        width="100">
-			      </el-table-column>
-			      <el-table-column
-			        prop="officename"
-			        label="Location"
-			        width="120">
-			      </el-table-column>
-			      <el-table-column
-			        prop="taluk"
-			        label="Taluk"
-			        width="120">
-			      </el-table-column>
-			      <el-table-column
-			        prop="circlename"
-			        label="Circle"
-			        width="120">
-			      </el-table-column>
-			      <el-table-column
-			        prop="regionname"
-			        label="Region"
-			        width="120">
-			      </el-table-column>
-			      <el-table-column
-			        prop="divisionname"
-			        label="Division"
-			        width="120">
-			      </el-table-column>
-			      <el-table-column
-			        prop="districtname"
-			        label="District"
-			        width="150">
-			      </el-table-column>
-			      <el-table-column
-			        prop="statename"
-			        label="State"
-			        >
-			      </el-table-column>
-			    </el-table>
-			  </el-col>
-			</el-row>
+            <hr v-if="filteredData.length>0">
+	  		<transition name="fade">
+	  		  <el-row :gutter="20" v-if="filteredData.length>0">
+	  		    <el-col :span="24">
+		  		  <el-table
+			        :data="filteredData"
+			        style="width: 100%">
+			        <el-table-column
+			          prop="pincode"
+			          label="Pincode"
+			          width="100">
+			        </el-table-column>
+			        <el-table-column
+			          prop="officename"
+			          label="Location"
+			          width="120">
+			        </el-table-column>
+			        <el-table-column
+			          prop="taluk"
+			          label="Taluk"
+			          width="120">
+			        </el-table-column>
+			        <el-table-column
+			          prop="circlename"
+			          label="Circle"
+			          width="120">
+			        </el-table-column>
+			        <el-table-column
+			          prop="regionname"
+			          label="Region"
+			          width="120">
+			        </el-table-column>
+			        <el-table-column
+			          prop="divisionname"
+			          label="Division"
+			          width="120">
+			        </el-table-column>
+			        <el-table-column
+			          prop="districtname"
+			          label="District"
+			          width="150">
+			        </el-table-column>
+			        <el-table-column
+			          prop="statename"
+			          label="State"
+			          >
+			        </el-table-column>
+			      </el-table>
+			    </el-col>
+			  </el-row>
+            </transition>
 	  	</el-col>
 	  </el-row>
 	</template>
@@ -94,7 +96,12 @@ const Store = () => Promise.resolve({
 
 	<!-- Add "scoped" attribute to limit CSS to this component only -->
 	<style scoped>
-
+      .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s
+      }
+      .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0
+      }
 	</style>
 
 })
